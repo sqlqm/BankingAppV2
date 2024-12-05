@@ -11,9 +11,11 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'your-default-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-# Update ALLOWED_HOSTS and CSRF_TRUSTED_ORIGINS
-ALLOWED_HOSTS = ['salambankapp.herokuapp.com', '127.0.0.1', 'localhost']
-CSRF_TRUSTED_ORIGINS = ['https://salambankapp.herokuapp.com']
+# Allowed Hosts
+ALLOWED_HOSTS = ['salambankapp-15e60424ea9a.herokuapp.com', '.herokuapp.com']
+
+# Trusted Origins for CSRF
+CSRF_TRUSTED_ORIGINS = ['https://salambankapp-15e60424ea9a.herokuapp.com']
 
 # Application definition
 INSTALLED_APPS = [
@@ -74,18 +76,10 @@ DATABASES = {
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 # Internationalization
@@ -94,9 +88,7 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
@@ -121,5 +113,3 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
-
-
