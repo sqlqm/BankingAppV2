@@ -11,9 +11,8 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'your-default-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['salambankapp.herokuapp.com']
-
-# CSRF Trusted Origins
+# Update ALLOWED_HOSTS and CSRF_TRUSTED_ORIGINS
+ALLOWED_HOSTS = ['salambankapp.herokuapp.com', '127.0.0.1', 'localhost']
 CSRF_TRUSTED_ORIGINS = ['https://salambankapp.herokuapp.com']
 
 # Application definition
@@ -65,7 +64,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'banking_system.wsgi.application'
 
 # Database
-# Switch between SQLite for local dev and PostgreSQL for production
 DATABASES = {
     'default': dj_database_url.config(
         default=f"sqlite:///{BASE_DIR / 'db.sqlite3'}",
@@ -123,4 +121,5 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
+
 
