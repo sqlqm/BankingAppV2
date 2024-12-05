@@ -11,7 +11,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'your-default-secret-key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = ['your-app-name.herokuapp.com']
+ALLOWED_HOSTS = ['salambankapp.herokuapp.com']
 
 # Application definition
 INSTALLED_APPS = [
