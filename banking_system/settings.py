@@ -13,6 +13,9 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['salambankapp.herokuapp.com']
 
+# CSRF Trusted Origins
+CSRF_TRUSTED_ORIGINS = ['https://salambankapp.herokuapp.com']
+
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -120,3 +123,4 @@ CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
+
