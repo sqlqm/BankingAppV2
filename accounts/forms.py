@@ -8,7 +8,6 @@ from .constants import GENDER_CHOICE
 
 
 class UserAddressForm(forms.ModelForm):
-
     class Meta:
         model = UserAddress
         fields = [
