@@ -1,5 +1,5 @@
+from django.conf import settings  # Add this import
 from django import forms
-from django.conf import settings
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 
@@ -8,6 +8,7 @@ from .constants import GENDER_CHOICE
 
 
 class UserAddressForm(forms.ModelForm):
+
     class Meta:
         model = UserAddress
         fields = [
@@ -33,7 +34,8 @@ class UserAddressForm(forms.ModelForm):
 
 class UserRegistrationForm(UserCreationForm):
     account_type = forms.ModelChoiceField(
-        queryset=BankAccountType.objects.all()
+        queryset=BankAccountType.objects.all(),
+        empty_label="Choose an account type"
     )
     gender = forms.ChoiceField(choices=GENDER_CHOICE)
     birth_date = forms.DateField()
@@ -46,6 +48,7 @@ class UserRegistrationForm(UserCreationForm):
             'email',
             'password1',
             'password2',
+            'account_type',  # Don't forget to add it to the fields
         ]
 
     def __init__(self, *args, **kwargs):
@@ -62,6 +65,13 @@ class UserRegistrationForm(UserCreationForm):
                 )
             })
 
+        # Handle case when no account types are available
+        if not BankAccountType.objects.exists():
+            self.fields['account_type'].widget.attrs.update({
+                'disabled': 'disabled'
+            })
+            self.fields['account_type'].help_text = "No account types available. Please contact the admin."
+
     @transaction.atomic
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -77,9 +87,6 @@ class UserRegistrationForm(UserCreationForm):
                 gender=gender,
                 birth_date=birth_date,
                 account_type=account_type,
-                account_no=(
-                    user.id +
-                    settings.ACCOUNT_NUMBER_START_FROM
-                )
+                account_no=(user.id + settings.ACCOUNT_NUMBER_START_FROM)  # settings should now be defined
             )
         return user
