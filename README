@@ -1,29 +1,16 @@
 # BankingAppV2
 
-## Description
-BankingAppV2 is a web-based banking application that allows users to perform essential banking tasks such as:
-- Creating user accounts and linking them to bank accounts.
-- Depositing, withdrawing, and transferring funds between accounts.
-- Viewing transaction history.
-- Managing user addresses and personal details.
+A web-based banking application built with Django, which allows users to register accounts, view balances, deposit, and withdraw money. The project leverages a PostgreSQL database and is hosted on Heroku.
 
 ## Features
-- **User Registration**:
-  - Users can create an account by providing personal information, such as name, email, and password.
-  - Additional details like gender, birth date, and account type are required during registration.
-
-- **Banking Operations**:
-  - Deposit and withdraw money securely.
-  - Transfer funds between user accounts.
-
-- **Transaction History**:
-  - View a detailed history of all transactions linked to your account.
-
-- **User Management**:
-  - Update personal information and manage addresses.
+- User authentication (login, registration)
+- Deposit and withdrawal functionality
+- Viewing and updating account balance
+- User profile with address information
+- Admin interface for managing users and transactions
 
 ## Technologies Used
-- **Backend**: Django
-- **Frontend**: HTML, CSS, JavaScript (if applicable)
-- **Database**: SQLite (or replace with your specific database)
-- **Deployment**: Hosted on Heroku
+- Django (Backend)
+- PostgreSQL (Database)
+- Heroku (Deployment)
+- HTML, CSS, JavaScript (Frontend)
